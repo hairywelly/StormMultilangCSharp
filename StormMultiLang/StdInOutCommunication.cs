@@ -5,22 +5,22 @@ namespace StormMultiLang
 {
     public class StdInOutCommunication : ICommunication
     {
-        private static readonly TextReader In = Console.In;
-        private static readonly TextWriter Out = Console.Out;
+        private readonly TextReader _in = Console.In;
+        private readonly TextWriter _out = Console.Out;
         
         public string ReadLine()
         {
-            return In.ReadLine();
+            return _in.ReadLine();
         }
 
         public void WriteLine(string line)
         {
-            Out.WriteLine(line);
+            _out.WriteLine(line);
         }
 
         public void Flush()
         {
-            Out.Flush();
+            _out.Flush();
         }
 
         public void Error(string line)
