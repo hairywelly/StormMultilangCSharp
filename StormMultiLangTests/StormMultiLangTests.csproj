@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GivenABoltWhenGivenAWordCountStreamToSplit.cs" />
     <Compile Include="GivenABasicBolt.cs" />
     <Compile Include="GivenAStdInOutCommunition.cs" />
     <Compile Include="Read\GivenAStormAcknowledge.cs" />
@@ -63,6 +64,9 @@
     <Compile Include="JsonStrings.cs" />
     <Compile Include="Read\GivenAStormReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestData\TestBoltDataSource.cs" />
+    <Compile Include="TestDoubles\ProvidedStreamCommunication.cs" />
+    <Compile Include="TestDoubles\SplitSentence.cs" />
     <Compile Include="TestDoubles\TestBasicBolt.cs" />
     <Compile Include="TestDoubles\TestBolt.cs" />
     <Compile Include="TestDoubles\TestSpout.cs" />
@@ -81,7 +85,9 @@
       <Name>StormMultiLang</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="TestData\8400log.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
