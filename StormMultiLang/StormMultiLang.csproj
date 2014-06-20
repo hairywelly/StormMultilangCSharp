@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1BFA4147-48B9-4F5A-94D8-B6FF552F04E7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StormMultiLang</RootNamespace>
+    <AssemblyName>StormMultiLang</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.4.0.21\lib\net40\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BasicBolt.cs" />
+    <Compile Include="Bolt.cs" />
+    <Compile Include="ConfigurationBuilder.cs" />
+    <Compile Include="Read\StormReaderNotBotheredAboutTaskIds.cs" />
+    <Compile Include="StdInOutCommunication.cs" />
+    <Compile Include="StrormConfiguration.cs" />
+    <Compile Include="Write\IBoltWriter.cs" />
+    <Compile Include="Write\IOsSpecific.cs" />
+    <Compile Include="Write\ISetupProcess.cs" />
+    <Compile Include="IBolt.cs" />
+    <Compile Include="Read\StormAcknowledge.cs" />
+    <Compile Include="Read\StormFail.cs" />
+    <Compile Include="Read\StormNext.cs" />
+    <Compile Include="Read\IProtocolReaderFormat.cs" />
+    <Compile Include="Read\IReadNext.cs" />
+    <Compile Include="ISpout.cs" />
+    <Compile Include="ICommunication.cs" />
+    <Compile Include="Read\IStormCommandIn.cs" />
+    <Compile Include="Read\IStormReader.cs" />
+    <Compile Include="Read\JsonProtocolReaderFormat.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Read\ReadUntillEndRecieved.cs" />
+    <Compile Include="Spout.cs" />
+    <Compile Include="Read\StormHandshake.cs" />
+    <Compile Include="Read\StormReader.cs" />
+    <Compile Include="Read\StormTuple.cs" />
+    <Compile Include="WellKnownStrings.cs" />
+    <Compile Include="Write\IProtocolWriterFormat.cs" />
+    <Compile Include="Write\ISpoutWriter.cs" />
+    <Compile Include="Write\IWriteNext.cs" />
+    <Compile Include="Write\JsonProtocolWriterFormat.cs" />
+    <Compile Include="Write\StandardBoltWriter.cs" />
+    <Compile Include="Write\StandardSpoutWriter.cs" />
+    <Compile Include="Write\WindowsPidStuff.cs" />
+    <Compile Include="Write\WritePidFileAndSendIdToParent.cs" />
+    <Compile Include="Write\WriteStringWithEndTerminator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

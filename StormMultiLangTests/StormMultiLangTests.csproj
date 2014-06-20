@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F955DA6C-CFE4-4EDB-8267-571F80098AF5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StormMultiLangTests</RootNamespace>
+    <AssemblyName>StormMultiLangTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NSubstitute">
+      <HintPath>..\packages\NSubstitute.1.7.2.0\lib\NET45\NSubstitute.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.4.0.21\lib\net40\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GivenABasicBolt.cs" />
+    <Compile Include="GivenAStdInOutCommunition.cs" />
+    <Compile Include="Read\GivenAStormAcknowledge.cs" />
+    <Compile Include="Read\GivenAStormFail.cs" />
+    <Compile Include="Read\GivenAStormHandshake.cs" />
+    <Compile Include="Read\GivenAStormNext.cs" />
+    <Compile Include="Read\GivenAStormReaderNotBotheredAboutTaskIds.cs" />
+    <Compile Include="Read\GivenAStormTuple.cs" />
+    <Compile Include="GivenABolt.cs" />
+    <Compile Include="Read\GivenAJsonProtocolReaderFormat.cs" />
+    <Compile Include="Read\GivenAReadUntillEndRecieved.cs" />
+    <Compile Include="GivenASpout.cs" />
+    <Compile Include="JsonStrings.cs" />
+    <Compile Include="Read\GivenAStormReader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestDoubles\TestBasicBolt.cs" />
+    <Compile Include="TestDoubles\TestBolt.cs" />
+    <Compile Include="TestDoubles\TestSpout.cs" />
+    <Compile Include="Write\GivenAJsonProtocolWriterFormat.cs" />
+    <Compile Include="Write\GivenAStandardBoltWriter.cs" />
+    <Compile Include="Write\GivenAStandardSpoutWriter.cs" />
+    <Compile Include="Write\GivenAWritePidFileAndSendIdToParent.cs" />
+    <Compile Include="Write\GivenAWriteStringWithEndTerminator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StormMultiLang\StormMultiLang.csproj">
+      <Project>{1bfa4147-48b9-4f5a-94d8-b6ff552f04e7}</Project>
+      <Name>StormMultiLang</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
