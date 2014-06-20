@@ -28,7 +28,7 @@ namespace StormMultiLang
                 new StormReader(_readNext, _readerFormat),_outputToParent,_writerFormat);
         }
 
-        public StrormConfiguration DontBotherWithTaksIds()
+        public StrormConfiguration DontBotherWithTaskIds()
         {
             return new StrormConfiguration(
                 new StormReaderNotBotheredAboutTaskIds(_readNext, _readerFormat), _outputToParent, _writerFormat);
