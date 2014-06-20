@@ -16,7 +16,6 @@ namespace WordCountTest
             foreach (var word in sentence.Split(' '))
             {
                 BasicEmit(new object[]{word});
-                Writer.LogInfo(word);
             }
         }
     }
