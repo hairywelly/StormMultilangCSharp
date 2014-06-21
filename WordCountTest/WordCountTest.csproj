@@ -55,9 +55,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /y $(TargetDir)WordCountTest.exe C:\Development\Storm\incubator-storm\examples\storm-starter\multilang\resources\WordCountTest.exe
-copy /y $(TargetDir)StormMultiLang.dll C:\Development\Storm\incubator-storm\examples\storm-starter\multilang\resources\StormMultiLang.dll
-copy /y $(TargetDir)ServiceStack.Text.dll C:\Development\Storm\incubator-storm\examples\storm-starter\multilang\resources\ServiceStack.Text.dll</PostBuildEvent>
+    <PostBuildEvent>copy /y $(TargetDir)WordCountTest.exe ..\..\..\JavaWordCountTest\multilang\resources\WordCountTest.exe
+copy /y $(TargetDir)StormMultiLang.dll  ..\..\..\JavaWordCountTest\multilang\resources\StormMultiLang.dll
+copy /y $(TargetDir)ServiceStack.Text.dll  ..\..\..\JavaWordCountTest\multilang\resources\ServiceStack.Text.dll</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
