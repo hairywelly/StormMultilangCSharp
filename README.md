@@ -10,7 +10,10 @@ A concept called a “bolt” that processes data inside the lump.
 
 **Righteous fist pump**
 
-And because I’m kind I’ll let you into a secret, it supports multiple languages for its spouts and bolts. Someone pass me a cushion!
+And because I’m kind I’ll let you into a secret, it supports multiple languages for it's spouts and bolts. 
+
+Someone pass me a cushion!
+
 The multilang protocol basically fires up a shell application and uses stdin stdout to do stuff…
 This protocol has official implementations (as of writing this for python, ruby and a few others)
 
@@ -27,7 +30,7 @@ So I’ve included some test stuff to help you!
 3.	Maven Package the test wordcount project (thanks storm people I totally stole that project)
 4.	Deploy to storm.
 
-I would go into more detail for step 1, 2, 3 and 4 but I’m drinking beer right now so I won’t
+I would go into more detail for steps 1, 2, 3 and 4 but I’m drinking beer right now so I won’t
 Enjoy
 
 **One more fist pump**
