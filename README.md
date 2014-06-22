@@ -7,6 +7,7 @@ It’s simple
 Big lump o’machines with storm installed on them…
 A concept called a “Spout” that injects data into the lump.
 A concept called a “bolt” that processes data inside the lump.
+
 *Righteous fist pump*
 
 And because I’m kind I’ll let you into a secret, it supports multiple languages for its spouts and bolts. Someone pass me a cushion!
@@ -14,6 +15,7 @@ The multilang protocol basically fires up a shell application and uses stdin std
 This protocol has official implementations (as of writing this for python, ruby and a few others)
 
 But today, via me *drum roll* it also supports c#!
+
 *More righteous fist pumps*
 
 Enough of your inane drivel 
@@ -26,5 +28,6 @@ So I’ve included some test stuff to help you!
 
 I would go into more detail for step 1, 2, 3 and 4 but I’m drinking beer right now so I won’t
 Enjoy
+
 *One more fist pump*
 
