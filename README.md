@@ -2,7 +2,7 @@ Storm multilang for C#
 ====================
 Multilang console app for c# yay!
 
-Storm is a #awesome distributed real-time computing thingy and people doing big data stuff need distributed real-time computing thingys. 
+Storm is an #awesome distributed real-time computing thingy and people doing big data stuff need distributed real-time computing thingys. 
 It’s simple
 Big lump o’machines with storm installed on them…
 A concept called a “Spout” that injects data into the lump.
