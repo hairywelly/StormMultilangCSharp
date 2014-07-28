@@ -34,7 +34,7 @@ namespace StormMultiLangTests.Read
         }
 
         [Test]
-        void ShouldReturnCommandWhenPrecededByTaksIds()
+        public void ShouldReturnCommandWhenPrecededByTaksIds()
         {
             var command = JsonStrings.TupleIn().WithoutEnd().ToSingleString();
             var taskIds = JsonStrings.TaskIdsIn().WithoutEnd().ToSingleString();

@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
+
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
@@ -31,12 +32,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
-  <ItemGroup>
+
+
+    <ItemGroup>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="ServiceStack.Text">
-      <HintPath>..\packages\ServiceStack.Text.4.0.21\lib\net40\ServiceStack.Text.dll</HintPath>
+      <HintPath>..\packages\ServiceStack.Text.3.9.71\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,10 +51,14 @@
   <ItemGroup>
     <Compile Include="BasicBolt.cs" />
     <Compile Include="Bolt.cs" />
-    <Compile Include="StrormConfigurationBuilder.cs" />
+    <Compile Include="IShutDown.cs" />
+    <Compile Include="Logging\SetupLog4NetBoltLogging.cs" />
+    <Compile Include="Logging\StormBoltAppender.cs" />
+    <Compile Include="StormConfigurationBuilder.cs" />
     <Compile Include="Read\StormReaderNotBotheredAboutTaskIds.cs" />
     <Compile Include="StdInOutCommunication.cs" />
-    <Compile Include="StrormConfiguration.cs" />
+    <Compile Include="StormConfiguration.cs" />
+    <Compile Include="ThreadSafeBoltWriter.cs" />
     <Compile Include="Write\IBoltWriter.cs" />
     <Compile Include="Write\IOsSpecific.cs" />
     <Compile Include="Write\ISetupProcess.cs" />

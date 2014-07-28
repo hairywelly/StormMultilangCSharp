@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
 using StormMultiLang;
@@ -21,6 +22,16 @@ namespace StormMultiLangTests.Read
             var subjectUnderTest = new ReadUntillEndRecieved(readLines);
 
             Assert.That(subjectUnderTest.Next(), Is.EqualTo(expected));
+        }
+
+        [Test]
+        [ExpectedException(typeof(InvalidDataException))]
+        public void ShouldThowExceptionIfNullLinesRead()
+        {
+            var readLines = Substitute.For<ICommunication>();
+            readLines.ReadLine().Returns(string.Empty);
+            var subjectUnderTest = new ReadUntillEndRecieved(readLines);
+            subjectUnderTest.Next();
         }
     }
 }

@@ -8,10 +8,10 @@ namespace StormMultiLangTests.TestData
     {
         private readonly TextReader _fileStream;
 
-        public TestBoltDataSource()
+        public TestBoltDataSource(string source = "StormMultiLangTests.TestData.8400log.txt")
         {
             var assembly = Assembly.GetExecutingAssembly();
-            var rawStream = assembly.GetManifestResourceStream("StormMultiLangTests.TestData.8400log.txt");
+            var rawStream = assembly.GetManifestResourceStream(source);
             _fileStream = new StreamReader(rawStream);
         }
 

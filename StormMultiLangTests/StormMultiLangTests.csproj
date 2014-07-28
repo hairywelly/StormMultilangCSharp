@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="NSubstitute">
       <HintPath>..\packages\NSubstitute.1.7.2.0\lib\NET45\NSubstitute.dll</HintPath>
     </Reference>
@@ -37,7 +41,7 @@
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Text">
-      <HintPath>..\packages\ServiceStack.Text.4.0.21\lib\net40\ServiceStack.Text.dll</HintPath>
+      <HintPath>..\packages\ServiceStack.Text.3.9.71\lib\net35\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,6 +55,8 @@
     <Compile Include="GivenABoltWhenGivenAWordCountStreamToSplit.cs" />
     <Compile Include="GivenABasicBolt.cs" />
     <Compile Include="GivenAStdInOutCommunition.cs" />
+    <Compile Include="Logging\GivenASetupBoltLogging.cs" />
+    <Compile Include="Logging\GivenAStormBoltAppender.cs" />
     <Compile Include="Read\GivenAStormAcknowledge.cs" />
     <Compile Include="Read\GivenAStormFail.cs" />
     <Compile Include="Read\GivenAStormHandshake.cs" />
@@ -73,6 +79,7 @@
     <Compile Include="Write\GivenAJsonProtocolWriterFormat.cs" />
     <Compile Include="Write\GivenAStandardBoltWriter.cs" />
     <Compile Include="Write\GivenAStandardSpoutWriter.cs" />
+    <Compile Include="Write\GivenAThreadSafeBoltWriter.cs" />
     <Compile Include="Write\GivenAWritePidFileAndSendIdToParent.cs" />
     <Compile Include="Write\GivenAWriteStringWithEndTerminator.cs" />
   </ItemGroup>
@@ -87,6 +94,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="TestData\8400log.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

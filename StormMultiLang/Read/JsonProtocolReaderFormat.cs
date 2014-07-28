@@ -1,4 +1,5 @@
-﻿using ServiceStack.Text;
+﻿using System.Linq;
+using ServiceStack.Text;
 using ServiceStack.Text.Json;
 using StormMultiLang.Write;
 
@@ -10,6 +11,8 @@ namespace StormMultiLang.Read
 
         public JsonProtocolReaderFormat(ISetupProcess setupProcess)
         {
+            JsConfig.DateHandler = JsonDateHandler.ISO8601; 
+            JsConfig.AssumeUtc = true;
             _setupProcess = setupProcess;
         }
 
@@ -58,6 +61,16 @@ namespace StormMultiLang.Read
             }
         }
 
+        public T Get<T>(object toBeParsed)
+        {
+            var asString = toBeParsed as string;
+            if (!string.IsNullOrEmpty(asString))
+            {
+                return (T)JsonReader<T>.Parse(toBeParsed as string);
+            }
+            return default(T);
+        }
+
         private IStormCommandIn Acknowledge(JsonObject json)
         {
             return new StormAcknowledge
@@ -81,14 +94,14 @@ namespace StormMultiLang.Read
 
         private IStormCommandIn Tuple(JsonObject json)
         {
-            var result = new StormTuple
-            {
-                Component = json.Get<string>(WellKnownStrings.Component),
-                TupleId = json.Get<long>(WellKnownStrings.Id),
-                Stream = json.Get<string>(WellKnownStrings.Stream),
-                Task = json.Get<long>(WellKnownStrings.Task),
-                Tuple = json.Get<string[]>(WellKnownStrings.Tuple)
-            };
+            var result = new StormTuple(
+                this,
+                json.Get<long>(WellKnownStrings.Id),
+                json.Get<string>(WellKnownStrings.Component),
+                json.Get<string>(WellKnownStrings.Stream),
+                json.Get<long>(WellKnownStrings.Task),
+                json.Get<string[]>(WellKnownStrings.Tuple).Cast<object>().ToArray());
+           
             return result;
         }
     }

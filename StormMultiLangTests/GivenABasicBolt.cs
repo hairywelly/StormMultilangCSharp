@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using NSubstitute;
 using NUnit.Framework;
 using StormMultiLang.Read;
@@ -11,6 +12,17 @@ namespace StormMultiLangTests
     [TestFixture]
     public class GivenABasicBolt
     {
+        private JsonProtocolReaderFormat JsonReader()
+        {
+            return new JsonProtocolReaderFormat(
+                Substitute.For<ISetupProcess>());
+        }
+
+        private StormTuple StormTuple(long tupleId)
+        {
+            return new StormTuple(JsonReader(), tupleId, "test", "default", 2, null);
+        }
+        
         [Test]
         public void ShouldInitialiseThenReadCommandThenEndBecauseOfException()
         {
@@ -25,7 +37,7 @@ namespace StormMultiLangTests
             reader.ReadCommand().Returns(_ => command, _ => { throw new Exception(); });
 
             var subjectUnderTest = new TestBasicBolt(reader, writer, tupleToReturn);
-            command.When(_ => _.BeProcessesBy(subjectUnderTest)).Do(_ => subjectUnderTest.Process(new StormTuple { TupleId = 22 }));
+            command.When(_ => _.BeProcessesBy(subjectUnderTest)).Do(_ => subjectUnderTest.Process(StormTuple(22)));
             subjectUnderTest.Run();
             
             handshake.Received().BeProcessesBy(subjectUnderTest);

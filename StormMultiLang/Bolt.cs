@@ -6,6 +6,8 @@ namespace StormMultiLang
 {
     public abstract class Bolt : IBolt
     {
+        private volatile Exception _exception;
+        private volatile bool _keepRunning = true;
         private readonly IStormReader _reader;
         private readonly IBoltWriter _writer;
 
@@ -13,6 +15,12 @@ namespace StormMultiLang
         {
             _reader = reader;
             _writer = writer;
+
+            AppDomain.CurrentDomain.UnhandledException += (sender , exception) =>
+            {
+                _keepRunning = false;
+                _exception = (Exception)exception.ExceptionObject;
+            };
         }
 
         public IBoltWriter Writer
@@ -29,16 +37,23 @@ namespace StormMultiLang
             handshake.BeProcessesBy(this);
             try
             {
-                while (true)
+                while (_keepRunning)
                 {
                     var command = _reader.ReadCommand();
                     command.BeProcessesBy(this);
+                }
+                if (_exception != null)
+                {
+                    OnException(_exception);
                 }
             }
             catch (Exception e)
             {
                 _writer.LogError(e.ToString());
+                OnException(e);
             }
         }
+
+        public virtual void OnException(Exception exception){}
     }
 }

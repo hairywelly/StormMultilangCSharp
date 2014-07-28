@@ -11,5 +11,7 @@ namespace StormMultiLang.Read
         long[] TaskIds(string rawStuff);
 
         IStormCommandIn Command(string rawStuff);
+
+        T Get<T>(object toBePArsed);
     }
 }

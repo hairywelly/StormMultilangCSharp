@@ -33,6 +33,7 @@ namespace StormMultiLang
             catch (Exception e)
             {
                 _writer.LogError(e.ToString());
+                OnException(e);
             }
         }
 
@@ -45,5 +46,7 @@ namespace StormMultiLang
         public abstract void Next(StormNext stormNext);
         public virtual void Acknowledge(StormAcknowledge stormAcknowledge){}
         public virtual void Fail(StormFail stormFail){}
+
+        public virtual void OnException(Exception e){}
     }
 }

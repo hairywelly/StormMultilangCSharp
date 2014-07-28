@@ -30,6 +30,13 @@ namespace StormMultiLangTests.Read
         }
 
         [Test]
+        public void ShouldJsonParse()
+        {
+            var subjectUnderTest = Subject();
+            Assert.That(subjectUnderTest.Get<long>("123456"), Is.EqualTo(123456));
+        }
+
+        [Test]
         public void ShouldIndicateTaskIdArray()
         {
             var rawJsonData = JsonStrings.TaskIdsIn().WithoutEnd().ToSingleString();

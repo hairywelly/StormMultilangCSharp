@@ -1,14 +1,30 @@
-﻿using ServiceStack.Text.Json;
-
-namespace StormMultiLang.Read
+﻿namespace StormMultiLang.Read
 {
     public struct StormTuple : IStormCommandIn
     {
-        public long TupleId { get; set; }
-        public string Component { get; set; }
-        public string Stream { get; set; }
-        public long Task { get; set; }
-        public string[] Tuple { get; set; }
+        private readonly IProtocolReaderFormat _format;
+
+        public StormTuple(
+            IProtocolReaderFormat format,
+            long tupleId, 
+            string component, 
+            string stream, 
+            long task, 
+            object[] tuple) : this()
+        {
+            _format = format;
+            TupleId = tupleId;
+            Component = component;
+            Stream = stream;
+            Task = task;
+            Tuple = tuple;
+        }
+
+        public long TupleId { get; private set; }
+        public string Component { get; private set; }
+        public string Stream { get; private set; }
+        public long Task { get; private set; }
+        private object[] Tuple { get; set; }
         
         public void BeProcessesBy(IBolt bolt)
         {
@@ -26,12 +42,12 @@ namespace StormMultiLang.Read
             {
                 return default(T);
             }
-            return (T) JsonReader<T>.Parse(Tuple[index]);
+            return _format.Get<T>(Tuple[index]);
         }
 
         private bool InvalidInputOrBadTuple(int index)
         {
-            return Tuple == null || index < 0 || index >= Tuple.Length || string.IsNullOrEmpty(Tuple[index]);
+            return Tuple == null || index < 0 || index >= Tuple.Length || Tuple[index] == null;
         }
     }
 }

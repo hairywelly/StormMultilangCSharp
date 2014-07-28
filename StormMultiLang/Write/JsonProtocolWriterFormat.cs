@@ -3,6 +3,7 @@ using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
 using ServiceStack;
+using ServiceStack.Text;
 
 namespace StormMultiLang.Write
 {
