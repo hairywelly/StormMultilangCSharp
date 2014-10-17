@@ -10,20 +10,20 @@ namespace StormMultiLang
     /// </summary>
     public class StormConfigurationBuilder
     {
-        [Flags]
-        internal enum ErrorModes : uint 
-        {
-            SYSTEM_DEFAULT = 0x0,
-            SEM_FAILCRITICALERRORS = 0x0001,
-            SEM_NOALIGNMENTFAULTEXCEPT = 0x0004,
-            SEM_NOGPFAULTERRORBOX = 0x0002,
-            SEM_NOOPENFILEERRORBOX = 0x8000
-        }
-        [DllImport("kernel32.dll")]
-        internal static extern ErrorModes SetErrorMode(ErrorModes mode);
+        //[Flags]
+        //internal enum ErrorModes : uint 
+        //{
+        //    SYSTEM_DEFAULT = 0x0,
+        //    SEM_FAILCRITICALERRORS = 0x0001,
+        //    SEM_NOALIGNMENTFAULTEXCEPT = 0x0004,
+        //    SEM_NOGPFAULTERRORBOX = 0x0002,
+        //    SEM_NOOPENFILEERRORBOX = 0x8000
+        //}
+        //[DllImport("kernel32.dll")]
+        //internal static extern ErrorModes SetErrorMode(ErrorModes mode);
 
-        [DllImport("kernel32.dll")]
-        static extern FilterDelegate SetUnhandledExceptionFilter(FilterDelegate lpTopLevelExceptionFilter);
+        //[DllImport("kernel32.dll")]
+        //static extern FilterDelegate SetUnhandledExceptionFilter(FilterDelegate lpTopLevelExceptionFilter);
         public delegate bool FilterDelegate(Exception ex);
  
         private readonly IProtocolWriterFormat _writerFormat = new JsonProtocolWriterFormat();
@@ -33,7 +33,7 @@ namespace StormMultiLang
 
         public StormConfigurationBuilder()
         {
-            RemoveCrashReportPopup();
+            //RemoveCrashReportPopup();
 
             ICommunication communication = new StdInOutCommunication();
             IOsSpecific osStuff = new WindowsPidStuff();
@@ -42,14 +42,14 @@ namespace StormMultiLang
             _readNext = new ReadUntillEndRecieved(communication);
         }
 
-        private static void RemoveCrashReportPopup()
-        {
-            SetUnhandledExceptionFilter(ex => true);
-            SetErrorMode(SetErrorMode(0) |
-                         ErrorModes.SEM_NOGPFAULTERRORBOX |
-                         ErrorModes.SEM_FAILCRITICALERRORS |
-                         ErrorModes.SEM_NOOPENFILEERRORBOX);
-        }
+        //private static void RemoveCrashReportPopup()
+        //{
+        //    SetUnhandledExceptionFilter(ex => true);
+        //    SetErrorMode(SetErrorMode(0) |
+        //                 ErrorModes.SEM_NOGPFAULTERRORBOX |
+        //                 ErrorModes.SEM_FAILCRITICALERRORS |
+        //                 ErrorModes.SEM_NOOPENFILEERRORBOX);
+        //}
 
         public StormConfiguration HandleTaskIds()
         {
