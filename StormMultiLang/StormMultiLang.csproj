@@ -53,6 +53,7 @@
     <Compile Include="IShutDown.cs" />
     <Compile Include="Logging\SetupLog4NetBoltLogging.cs" />
     <Compile Include="Logging\StormBoltAppender.cs" />
+    <Compile Include="Read\StormHeartBeat.cs" />
     <Compile Include="StormConfigurationBuilder.cs" />
     <Compile Include="Read\StormReaderNotBotheredAboutTaskIds.cs" />
     <Compile Include="StdInOutCommunication.cs" />

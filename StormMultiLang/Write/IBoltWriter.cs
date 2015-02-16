@@ -4,6 +4,7 @@
     {
         void Acknowledge(long tupleId);
         void Fail(long tupleId);
+        void Sync();
         void LogInfo(string infoMessage);
         void LogError(string errorMessage);
         

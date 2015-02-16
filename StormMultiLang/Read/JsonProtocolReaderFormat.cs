@@ -55,10 +55,15 @@ namespace StormMultiLang.Read
                 case WellKnownStrings.Acknowledge:
                     return Acknowledge(jsonObject);
                 case WellKnownStrings.Fail:
-                    return Fail(jsonObject);
-                default:
-                    return Tuple(jsonObject);
+                    return Fail(jsonObject);    
             }
+
+            if (jsonObject.Get<string>(WellKnownStrings.Stream) == WellKnownStrings.HeartBeat)
+            {
+                return HeartBeat(jsonObject);
+            }
+
+            return Tuple(jsonObject);
         }
 
         public T Get<T>(object toBeParsed)
@@ -102,6 +107,19 @@ namespace StormMultiLang.Read
                 json.Get<long>(WellKnownStrings.Task),
                 json.Get<string[]>(WellKnownStrings.Tuple).Cast<object>().ToArray());
            
+            return result;
+        }
+
+        private IStormCommandIn HeartBeat(JsonObject json)
+        {
+            var result = new StormHeartBeat(
+                this,
+                json.Get<long>(WellKnownStrings.Id),
+                json.Get<string>(WellKnownStrings.Component),
+                json.Get<string>(WellKnownStrings.Stream),
+                json.Get<long>(WellKnownStrings.Task),
+                json.Get<string[]>(WellKnownStrings.Tuple).Cast<object>().ToArray());
+
             return result;
         }
     }

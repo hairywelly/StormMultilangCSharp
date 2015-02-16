@@ -25,6 +25,8 @@ namespace StormMultiLangTests.TestDoubles
 
         public override void Initialise(StormHandshake stormHandshake){}
 
+        public override void Sync(StormHeartBeat stormHeartBeat){}
+
         public override void Process(StormTuple stormTuple)
         {
             if (_started.WaitOne(1) == false)

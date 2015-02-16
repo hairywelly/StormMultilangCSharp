@@ -45,6 +45,11 @@ namespace StormMultiLang
             _writerQueue.Add(() => _proxy.Fail(tupleId));
         }
 
+        public void Sync()
+        {
+            _writerQueue.Add(() => _proxy.Sync());
+        }
+
         public void LogInfo(string infoMessage)
         {
             _writerQueue.Add(() => _proxy.LogInfo(infoMessage));

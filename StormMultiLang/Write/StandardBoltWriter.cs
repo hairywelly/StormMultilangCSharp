@@ -30,6 +30,12 @@ namespace StormMultiLang.Write
             _writeNext.Write(toSend);
         }
 
+        public void Sync()
+        {
+            var toSend = _format.Sync();
+            _writeNext.Write(toSend);
+        }
+
         public void LogInfo(string infoMessage)
         {
             var toSend = _format.LogInfo(infoMessage);

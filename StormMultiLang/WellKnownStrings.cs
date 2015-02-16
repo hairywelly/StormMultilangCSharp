@@ -24,5 +24,6 @@
         public const string Message = "msg";
         public const string Synchronize = "sync";
         public const string Next = "next";
+        public const string HeartBeat = "__heartbeat";
     }
 }
