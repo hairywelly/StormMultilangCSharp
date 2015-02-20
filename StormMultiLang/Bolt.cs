@@ -30,6 +30,7 @@ namespace StormMultiLang
 
         public abstract void Initialise(StormHandshake stormHandshake);
         public abstract void Process(StormTuple stormTuple);
+        public abstract void Sync(StormHeartBeat stormHeartBeat);
 
         public void Run()
         {

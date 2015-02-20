@@ -16,6 +16,11 @@ namespace StormMultiLang
             Writer.Acknowledge(stormTuple.TupleId);
         }
 
+        public override void Sync(StormHeartBeat stormHeartBeat)
+        {
+            Writer.Sync();
+        }
+
         protected void BasicEmit(object[] tuple)
         {
             Writer.EmitTuple(tuple, new[] {_currentTupleId});

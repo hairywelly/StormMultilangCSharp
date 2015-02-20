@@ -6,5 +6,6 @@ namespace StormMultiLang
     {
         void Process(StormTuple stormTuple);
         void Initialise(StormHandshake stormHandshake);
+        void Sync(StormHeartBeat stormHeartBeat);
     }
 }
